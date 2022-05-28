@@ -1,7 +1,6 @@
-package com.example.userservice.repository;
+package com.example.userservice.entity;
 
 import java.util.Optional;
-import javax.swing.text.html.Option;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<UserEntity, Long> {

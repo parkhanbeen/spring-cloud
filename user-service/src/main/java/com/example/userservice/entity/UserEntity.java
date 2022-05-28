@@ -1,4 +1,4 @@
-package com.example.userservice.repository;
+package com.example.userservice.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

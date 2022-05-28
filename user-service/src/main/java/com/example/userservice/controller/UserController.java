@@ -1,7 +1,7 @@
 package com.example.userservice.controller;
 
 import com.example.userservice.dto.UserDto;
-import com.example.userservice.repository.UserEntity;
+import com.example.userservice.entity.UserEntity;
 import com.example.userservice.service.UserService;
 import com.example.userservice.vo.Greeting;
 import com.example.userservice.vo.RequestUser;
