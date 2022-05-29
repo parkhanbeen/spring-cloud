@@ -3,8 +3,11 @@ package com.example.orderservice.vo;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.Date;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Setter
+@Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResponseOrder {
   private String productId;
