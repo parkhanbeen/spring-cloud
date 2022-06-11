@@ -34,7 +34,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: refrash, health, beans
+        include: refresh, health, beans
 
 #token:
 #  expiration_time: 86400000
