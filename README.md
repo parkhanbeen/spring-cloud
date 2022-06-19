@@ -98,12 +98,12 @@ server:
 
 * `rabbitmq` 설치
 > brew update
-<br>
+<br></br>
 > brew install rabbitmq
 * rabbitmq 실행
-<br>
+<br></br>
 > cd /usr/local/sbin
-<br>
+<br></br>
 > ./rabbitmq-server   
 
 
