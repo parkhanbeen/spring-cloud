@@ -86,3 +86,50 @@ server:
 
 * 0번으로 지정시 랜덤 포트를 사용하겠다는 의미이다.
 
+
+## spring cloud bus
+
+### 개요
+
+* `config` 정보가 변경되면 각각의 마이크로 서비스는 변경된 값을 가져오기 위해 `/actuator/refresh`를 `POST`로 호출하여 동기화를 해줘야 한다.
+* 이러한 불편함을 해소하기 위해 동적으로 `config` 변경을 동기화 하기 위한 ` message que` 를 연결하는 역활을 한다.
+
+### 설정
+
+* `rabbitmq` 설치
+> brew update
+<br>
+> brew install rabbitmq
+* rabbitmq 실행
+<br>
+> cd /usr/local/sbin
+<br>
+> ./rabbitmq-server   
+
+
+* 의존성 추가
+
+```gradle
+implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'
+```
+
+* `yml` 파일 설정
+
+```yml
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh
+```
+
+
+
+
