@@ -11,6 +11,11 @@ eureka:
 spring:
   application:
     name: apigateway-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
   cloud:
     gateway:
       default-filters:
@@ -52,7 +57,7 @@ spring:
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
-            - Path=/user-service/actuator**
+            - Path=/user-service/actuator/**
             - Method=GET,POST
           filters:
             - RemoveRequestHeader=Cookie
@@ -94,4 +99,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh, beans, health, httptrace
+        include: refresh, beans, health, httptrace, busrefresh
