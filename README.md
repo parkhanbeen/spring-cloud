@@ -86,6 +86,55 @@ server:
 
 * 0번으로 지정시 랜덤 포트를 사용하겠다는 의미이다.
 
+## spring boot Actuator
+
+### 개요
+
+* 애플리케이션이 최초 빌드될때 `yml`파일에 있는 설정 정보를 이용해 애플리케이션을 구동시킨다.
+* 하지만 최초 빌드 시점에만 `config` 서버로 부터 설정 정보를 가져와 이용하기 때문에 **마이크로서비스들이 다시 빌드되지 않는 이상 설정 정보들은 반영되지 않는다.**
+* 간단하게 다시 애플리케이션을 구동시키면 설정 정보가 동기화 되지만 마이크로서비스가 100개가 있다고 생각해보자 100개의 서비스를 다 재기동 시켜야 할까?
+* 해결 방법은 `spring boot Actuator`를 사용하는 것이다.
+
+### 다양한 기능
+
+* [Actuator 공식 문서](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html)
+>Spring Boot includes a number of additional features to help you monitor and manage your application when you push it to production. You can choose to manage and monitor your application by using HTTP endpoints or with JMX. Auditing, health, and metrics gathering can also be automatically applied to your application.
+
+* 어플리케이션을 모니터링하고 관리하는 기능을 `Spring Boot`에서 자체적으로 제공해주는데 그게 `Actuator`라고 한다. 
+ 그리고 `Actuator`는 `http`와 `JMX`를 통해 확인할 수 있다.
+* `spring boot Actuator`는 애플리케이션의 모니터링 관련한 다양한 기능을 제공한다.
+* 애플리케이션의 실행 여부, 패키지 로깅 레벨, Bean 목록, Metric(CPU, Heap, Thread 등) 등 여러 정보들을 확인할 수 있는 기능을 제공한다.
+
+### 엔드포인트
+
+ID|설명
+---|---|
+beans| 애플리케이션에 있는 모든 빈의 전체 목록을 표시
+health|애플리케이션 상태 정보를 표시
+metrics|애플리케이션의 각종 지표(metrics)정보를 표시
+httptrace|HTTP 추적 정보를 표시(기본적으로 마지막 100개의 HTTP 요청-응답 교환)
+shutdown|애플리케이션을 정상적으로 종료한다. 기본적으로 비활성화
+
+* 자세한 정보는 [Actuator 엔드포인트](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.endpoints) 에서 확인할 수 있다.
+
+### 설정
+
+* 의존성 추가
+
+```gradle
+implementation 'org.springframework.boot:spring-boot-starter-actuator'
+```
+
+* `application.yml`에 `include` 추가
+
+```yml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans
+```
+
 
 ## spring cloud bus
 
