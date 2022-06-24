@@ -17,9 +17,7 @@
 * 헤더, 쿼리 스트링 및 요청 데이터 값 변환
 * `IP` 허용 목록 추가
 
-## Netflix Ribbon
-
-### Spring Cloud MSA 
+### Spring Cloud MSA Client
 
 1. `RestTemplate`
     ```java
@@ -40,6 +38,8 @@
     }   
    ```
    * [Spring Feign client 문서](https://spring.io/projects/spring-cloud-openfeign)
+   
+## Netflix Ribbon
 
 ### Ribbon :  client side Load Balancer
 
@@ -47,7 +47,7 @@
 * 헬스 체크 제공.
 * `Spring Cloud Ribbon`은 `Spring Boot 2.4`에서 `Maintenance`상태
 * 공식 문서에서 `zuul` 대안으로 `Spring Cloud Loadbalancer`를 사용하라고 제안하고 있다.
-* [Spring Cloud Loadbalancer 공식 문서](https://spring.io/guides/gs/spring-cloud-loadbalancer/)
+* [Spring Cloud Loadbalancer 공식 문서](https://spring.io/guides/gs/spring-cloud-loadbalancer/)   
 
 ## Netflix zuul
 
