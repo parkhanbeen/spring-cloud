@@ -14,3 +14,5 @@ gateway:
 
 order_service:
   url: http://ORDER-SERVICE/order-service/%s/orders
+  exception: 
+    order_is_empty: 주문 상품 정보가 없습니다.

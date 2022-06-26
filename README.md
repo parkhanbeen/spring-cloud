@@ -30,6 +30,9 @@
 
 
 2. `Feign Client`
+*  `Rest Call`을 추상화 한 `Spring Cloud Netfix` 라이브러리
+
+
    ```java
    @FeignClient("name")
    public interface NameService {
