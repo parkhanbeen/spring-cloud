@@ -11,3 +11,6 @@ token:
 
 gateway:
   ip: 192.168.219.101
+
+order_service:
+  url: http://ORDER-SERVICE/order-service/%s/orders
