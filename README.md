@@ -182,6 +182,42 @@ management:
         include: health, busrefresh
 ```
 
+## Apache Kafka
+
+* `Apache Software Foundation`으로 `Scalar` 언어로 된 오픈 소스 메시지 브로커 프로젝트
+* 링크드인에서 개발, 2011년 오픈 소스화
+* 실시간 데이터 피드를 관리하기 위해 통일된 높은 처리량, 낮은 지연 시간을 지닌 플랫폼 제공
+* Apple, Netfilx, kakao 등 여러 기업에서 사용
+
+### Kafka 도입 이전
+
+* `End-To-End` 연결 방식의 아키텍처
+* 데이터 연동의 복잡성 증가 (HW, 운영체제, 장애 등)
+* 서로 다른 데이터 `Pipeline` 연결 구조
+* 확장이 어려운 구조
 
 
+**모든 시스템으로 데이터를 실시간으로 전송하여 처할 수 있는 시스템** <br>
+**데이터가 많아지더라도 확장이 용이한 시스템**
 
+### 특징
+
+* 높은 처리량과 낮은 지연시간
+* 높은 확장성
+* 고가용성
+* 내구성 
+  * 프로듀서에 의해 카프카로 전송되는 모든 메세지는 안전한 저장소인 카프카 로컬 디스크에 저장된다.
+* 개발 편의성
+* 운영 및 관리 편의성
+
+### Kafka Broker
+
+* 실행된 `Kafka` 애플리케이션 서버
+* 3대 이상의 `Broker Cluster` 구성
+* `Zookeeper` 연동
+  *  역할 : 메타데이터(`Broker ID, Controller ID` 등) 저장
+  * `Controller` 정보 저장
+* n개 `Broker` 중 1대는 `Controller` 기능 수행
+  * `Controller` 역할
+    * 각 `Broker`에게 담당 파티션 할당 수행
+    * `Broker` 정상 동작 모니터링 관리
