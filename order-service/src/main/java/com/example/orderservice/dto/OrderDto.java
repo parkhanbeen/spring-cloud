@@ -1,7 +1,6 @@
 package com.example.orderservice.dto;
 
 import java.io.Serializable;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -2,7 +2,6 @@ package com.example.orderservice.vo;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.Date;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
