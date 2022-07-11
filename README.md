@@ -46,6 +46,8 @@
 
 ### Ribbon :  client side Load Balancer
 
+* `Ribbon`은 load balancing을 요청 애플리케이션 단에서 수행해주는 `client side Load Balancer`이다.
+* `Ribbon`과 같이 `Load Balancer`가 필요한 이유는 **부하 분산을 적절하게 하여 서비스의 가용성을 최대화하기 위함**이다.
 * 마이크로서비스 이름으로 호출.
 * 헬스 체크 제공.
 * `Spring Cloud Ribbon`은 `Spring Boot 2.4`에서 `Maintenance`상태
@@ -54,7 +56,9 @@
 
 ## Netflix zuul
 
+* `Netflix`에서 제공하는 `API Gateway`로 마이크로 서비스 아키텍쳐에서 여러 클라이언트 요청을 적절한 서비스로 프록시 및 라우팅하기 위한 서비스이다.
 * `Gateway` 역활을 담당한다.
+* `zuul`은 내부적으로 `Eureka` 서버를 사용하고 `zuul` 또한 `Eureka Clien`이다.
 * `Spring Cloud Zuul`은 `Spring Boot 2.4`에서 `Maintenance`상태
   [(Spring Cloud Zuul Maintenance 상태 설명)](https://spring.io/blog/2018/12/12/spring-cloud-greenwich-rc1-available-now#spring-cloud-netflix-projects-entering-maintenance-mode)
 * 공식 문서에서 `zuul` 대안으로 `Spring Cloud Gateway`를 사용하라고 제안하고 있다.
