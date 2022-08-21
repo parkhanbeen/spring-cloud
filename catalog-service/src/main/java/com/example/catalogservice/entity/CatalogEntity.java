@@ -35,4 +35,11 @@ public class CatalogEntity implements Serializable {
   @Column(nullable = false, updatable = false, insertable = false)
   @ColumnDefault(value = "CURRENT_TIMESTAMP")
   private Date CreatedAt;
+
+  /**
+   * 수량을 업데이트 합니다.
+   */
+  public void updateStock(Integer stock) {
+    this.stock = stock;
+  }
 }
