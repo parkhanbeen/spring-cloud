@@ -243,3 +243,44 @@ management:
   * `Controller` 역할
     * 각 `Broker`에게 담당 파티션 할당 수행
     * `Broker` 정상 동작 모니터링 관리
+
+## CircuitBreaker
+
+* 장애가 발생하는 서비스에 반복적인 호출이 되지 못하게 차단
+* 특정 서비스가 정상적으로 동작하지 않을 경우 다른 기능으로 대체 수행 -> 장애 회피
+* http://martinfowler.com/bliki/CircuitBreaker.html
+
+### CircuitBreaker 상태
+
+* CLOSED
+  * 초기 상태로 모든 마이크로 서비스에 접속 가능 상태
+* OPEN
+  * 서비스가 정상적으로 동작하지 않거나 에러가 발생하는 경우가 임계치를 넘어 open 상태가 됨
+
+## Microservice 분산 추적
+
+### Zipkin
+
+* https://zipkin.io/
+* Twitter에서 사용하는 분산 환경의 Timing 데이터 수집, 추적 시스템 (오픈소스)
+* Google Drapper에서 발전하였으며, 분산환경에서의 시스템 병복 현상 파악
+* Collector, Query Service, Database WebUI로 구성
+* **Span**
+  * 하나의 요청에 사용되는 작업의 단위
+  * 64 bit unique ID
+
+* **Trace**
+  * 트리 구조로 이뤄진 Span 셋
+  * 하나의 요청에 대한 같은 Trace ID 발급
+
+### Spring Cloud Sleuth
+
+* 스프링 부트 애플리케이션을 zipkin과 연동
+  * 스프링 부트 서버에 가지고 있는 로그 파일 데이터나 스트리밍 데이터를 zipkin에 전달하는 역활
+* 요청 값에 따른 Trace ID, Span ID 부여
+* Trace와 Span Ids를 로그에 추가 가능
+  * servlet filter
+  * rest template
+  * scheduled actions
+  * message channels
+  * feign client
