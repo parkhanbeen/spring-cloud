@@ -64,10 +64,12 @@ public class UserServiceImpl implements UserService {
     UserDto userDto = new ModelMapper().map(userEntity, UserDto.class);
 
 //    var orders = orderClient.getOrders(userId);
+    log.info("Before call orders 마이크로서비스");
     CircuitBreaker circuitBreaker = circuitBreakerFactory.create("circuitBreaker");
     List<ResponseOrder> orders =  circuitBreaker.run(
         () -> orderClient.getOrders(userId),
         throwable -> Collections.emptyList());
+    log.info("after called orders 마이크로서비스");
 
     userDto.setOrders(orders);
 
