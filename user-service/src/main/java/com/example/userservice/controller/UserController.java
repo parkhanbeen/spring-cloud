@@ -9,6 +9,8 @@ import com.example.userservice.vo.ResponseUser;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
+
+import io.micrometer.core.annotation.Timed;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.core.env.Environment;
@@ -38,6 +40,7 @@ public class UserController {
   }
 
   @GetMapping("/health-check")
+  @Timed(value = "users.status", longTask = true)
   public String status() {
     return String.format("It's Working In User Service, "
         + "Port(local.server.port) = " + environment.getProperty("local.server.port")
@@ -48,6 +51,7 @@ public class UserController {
   }
 
   @GetMapping("/welcome")
+  @Timed(value = "users.welcome", longTask = true)
   public String welcome() {
 //    return environment.getProperty("greeting.message");
     return greeting.getMessage();
