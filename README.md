@@ -382,3 +382,23 @@ $ docker run [OPTIONS] IMAGE[:TAG|@DIGEST][COMMAND][ARG...]
 ```
 $ docker run ubuntu:16.04
 ```
+
+### Create Bridge Network
+
+* Bridge network
+  ```
+  $ docker network create --driver bridge [브릿지 이름]
+  ```
+
+* Host network
+  * 네트워크를 호스트로 설정하면 호스트의 네트워크 환경을 그대로 사용
+  * 포트 포워딩 없이 내부 어플리케이션 사용
+
+* None network
+  * 네트워크를 사용하지 않음
+  * IO 네트워크만 사용, 외부와 단절
+
+```
+$ docker network create ecommerce-network
+& docker network ls
+```
