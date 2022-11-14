@@ -10,4 +10,9 @@ token:
   secret: user_token_native_user_service_default
 
 gateway:
-  ip: 192.168.219.101
+  ip: 172.18.0.5
+
+order_service:
+  url: http://ORDER-SERVICE/order-service/%s/orders
+  exception:
+    orders_is_empty: thereis no item.
