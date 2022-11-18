@@ -402,3 +402,50 @@ $ docker run ubuntu:16.04
 $ docker network create ecommerce-network
 & docker network ls
 ```
+
+## Event Driven Architecture
+
+### Monolithic
+
+* 단일 데이터베이스
+* 트랜잭션 처리 -> ACID
+  * Atomicity   (원자성)
+  * Consistency (일관성)
+  * Isolation   (독립성)
+  * Durable     (지속성)
+
+### Microservice
+
+* 각 서비스마다 독립적인 언어 및 DB (Plyglot)
+* API를 통해 접근
+
+### Event Sourcing
+
+* 데이터의 마지막 상태만 저장하는 것이 아닌, 해당 데이터에 수행된 전체 이력을 기록
+* 데이터 구조 단순
+* 데이터의 일관성과 트랜잭션 처리 가능
+* 데이터 저장소의 개체를 직접 업데이트 하지 않기 때문에, 동시성에 대한 충돌 문제 해결
+
+
+* 도메인 주도 설계(Domain-Driven Design)
+  * Aggregate
+  * Projection
+* 메시지 중심의 비동기 작업 처리
+* 단점
+  * 모든 이벤트에 대한 복원
+  * 다양한 데이터 조회
+
+### CQRS(Command and Query Responsibility Segregation)
+
+* 명령과 조회의 책임 분리
+  * 상태를 변경하는 Command
+  * 조회를 담당하는 Query
+
+## Saga pattern
+
+* Application에서 Transaction 처리
+  * Choreography, Orchestration
+* Application이 분리된 경우에는 각각의 Local transaction만 처리
+* 각 App에 대한 연속적인 Transaction에서 실패할 경우
+  * Rollback 처리 구현 -> 보상 Transaction
+* 데이터의 원자성을 보장하지는 않지만, 일관성을 보장
